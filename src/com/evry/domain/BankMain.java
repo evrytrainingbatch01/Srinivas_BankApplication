@@ -7,17 +7,8 @@ import com.evry.serviceimp.AdminServiceImp;
 public class BankMain {
 	public static void main(String[] args) {
 		/*
-		 * Scanner scn=new Scanner(System.in); System.out.println("Enter a value"); int
-		 * a=scn.nextInt(); System.out.println("value is :" +a);
-		 * --------------------------------- char c=scn.next().charAt(0);
-		 * System.out.println("value is"+ c);
-		 * 
-		 * 
-		 */
-		/*
 		 * WelcomeBanking wc = new WelcomeBanking("Srinivas", "BA001"); wc.showMenu();
 		 */
-
 		System.out.println("Welocome to Evry Banking Services");
 		Scanner input = new Scanner(System.in);
 
@@ -44,20 +35,22 @@ public class BankMain {
 
 		System.out.println("Select 1 or 2 ");
 		System.out.println("1.Get Admin");
-		System.out.println("2.Update Admin");
+		System.out.println("2.Add Customer");
 		int opt = sc.nextInt();
 		switch (opt) {
 		case 1:
 			getAdmin(sc, opt, asi);
 			break;
 		case 2:
-			getAdmin(sc, opt, asi);
+			addCustomer(sc, opt, asi);
 			break;
 		default:
 			System.out.println("Invalid choice");
 			break;
 		}
 	}
+
+	
 
 	private static void getAdmin(Scanner sc, Integer opt, AdminServiceImp asi) {
 		// TODO Auto-generated method stub
@@ -72,9 +65,31 @@ public class BankMain {
 		}
 
 	}
-
-	private static void getAdmin(int opt, AdminServiceImp asi) {
+	
+	private static void addCustomer(Scanner sc, Integer opt, AdminServiceImp asi) {
 		// TODO Auto-generated method stub
-
+		if(opt.equals(2)) {
+			Customer cust = new Customer();
+			System.out.println("Enter your First-Name :");
+			cust.setFirstName(sc.next());
+			System.out.println("Enter your Last-Name :");
+			cust.setLastName(sc.next());
+			System.out.println("Enter your Age :");
+			cust.setAge(sc.nextInt());
+			System.out.println("Enter your City :");
+			cust.setCity(sc.next());
+			System.out.println("Enter your Country :");
+			cust.setCountry(sc.next());
+			System.out.println("Enter your Mobile No :");
+			cust.setMobileNo(sc.nextInt());
+			
+			boolean CustAdded = asi.addCustomer(cust);
+			if(CustAdded) {
+				System.out.println("Customer Added Successfully");
+			}
+			
+		}
+		
 	}
+
 }

@@ -1,8 +1,8 @@
-package com.evry.domain;
+/*package com.evry.domain;
 
 import java.io.Console;
-import java.util.Scanner;
 
+import java.util.Scanner;
 public class WelcomeBanking {
 
 	int balance;
@@ -114,3 +114,4 @@ public class WelcomeBanking {
 }
 
 
+*/
