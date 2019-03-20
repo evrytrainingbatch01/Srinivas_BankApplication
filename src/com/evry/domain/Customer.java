@@ -10,6 +10,11 @@ public class Customer {
 	private int mobileNo;
 	private String emailId;
 	
+	public Customer() {
+		
+		
+	}
+	
 	public Customer(String id, String firstName, String lastName, int age, String city, String country, int mobileNo,
 			String emailId) {
 		super();
