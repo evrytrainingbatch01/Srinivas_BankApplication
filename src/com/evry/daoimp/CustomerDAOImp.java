@@ -1,45 +1,55 @@
 package com.evry.daoimp;
-/*package com.evry.daoimp;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashSet;
-import java.util.Set;
 
-import com.evry.dao.UserDAO;
+import com.evry.dao.CustomerDAO;
 import com.evry.domain.Customer;
 import com.evry.util.MySqlCon;
 
-public class UserDAOImp implements UserDAO{
+public class CustomerDAOImp implements CustomerDAO{
 	Connection con = MySqlCon.getConnection();
-
-	// GET ALL ADMINS
-	public Set<Customer> getAllAdmins() {
-
-		Set<Customer> setOfAdmins = new HashSet<>();
-
-		String sqlQueryString = "select * from customer";
-		ResultSet rs = null;
+	
+	public Customer getCustomerDetails(Integer id) {
+		ResultSet rs;
 		Statement statement = null;
 		try {
 			statement = con.createStatement();
-			rs = statement.executeQuery(sqlQueryString);
-			while (rs.next()) {
-				Customer cus = new Customer();
-				admin.setId(rs.getInt(1));
-				admin.setFirstname(rs.getString(2));
-				admin.setLastname(rs.getString(3));
-				admin.setAge(rs.getInt(4));
-				setOfAdmins.add(admin);
-				// System.out.println(rs.getInt(1) + " " + rs.getString(2) + " "
-				// + rs.getString(3));
+			rs = statement.executeQuery("select * from customer where id=" + id);
+			if (rs.next()) {
+				Customer custData = new Customer();
+				custData.setId(rs.getInt(1));
+				custData.setFirstName(rs.getString(2));
+				custData.setLastName(rs.getString(3));
+				custData.setAge(rs.getInt(4));
+				custData.setCity(rs.getString(5));
+				custData.setCountry(rs.getString(6));
+				custData.setMobileNo(rs.getInt(7));
+				return custData;
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} 
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return null;
+	}
 
-		return setOfAdmins;
+	@Override
+	public boolean UpdateCustomerBal(Integer id,Integer balance) {
+		PreparedStatement stmt = null;
+		 try {
+			 stmt = con.prepareStatement("update customer set balance=? where id=?");
+			 stmt.setInt(1, id);
+			 stmt.setInt(2, balance);
+		        int i = stmt.executeUpdate();
+		      if(i == 1) {
+		    	  return true;
+		      }
+		    } catch (SQLException ex) {
+		        ex.printStackTrace();
+		    }
+		return false;
 	}
 }
-*/

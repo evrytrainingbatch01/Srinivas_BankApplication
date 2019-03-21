@@ -8,6 +8,9 @@ public class Customer {
 	private String city;
 	private String country;
 	private int mobileNo;
+	private int balance;
+
+	
 
 	public Customer() {
 
@@ -23,6 +26,7 @@ public class Customer {
 		this.city = city;
 		this.country = country;
 		this.mobileNo = mobileNo;
+		this.balance= balance;
 	}
 
 	public Integer getId() {
@@ -77,14 +81,27 @@ public class Customer {
 		return mobileNo;
 	}
 
+	public Customer(int balance) {
+		super();
+		this.balance = balance;
+	}
+
 	public void setMobileNo(int mobileNo) {
 		this.mobileNo = mobileNo;
+	}
+	
+	public int getBalance() {
+		return balance;
+	}
+
+	public void setBalance(int balance) {
+		this.balance = balance;
 	}
 
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", city="
-				+ city + ", country=" + country + ", mobileNo=" + mobileNo + "]";
+				+ city + ", country=" + country + ", mobileNo=" + mobileNo +", balance=" + balance + "]";
 	}
 
 }

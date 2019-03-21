@@ -1,5 +1,8 @@
 package com.evry.service;
 
-public interface CustomerService {
+import com.evry.domain.Customer;
 
+public interface CustomerService {
+	public Customer getCustomerDetails(Integer id);
+	public boolean UpdateCustomerBal(Integer id,Integer balance);
 }
