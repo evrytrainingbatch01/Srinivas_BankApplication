@@ -7,10 +7,13 @@ import com.evry.domain.Admin;
 import com.evry.domain.Customer;
 import com.evry.service.AdminService;
 
-public class AdminServiceImp implements AdminService{
-	
-	
-AdminDAOImp adi=new AdminDAOImp();
+/**
+ * @author srinivas.p
+ *
+ */
+public class AdminServiceImp implements AdminService {
+
+	AdminDAOImp adi = new AdminDAOImp();
 
 	@Override
 	public Admin getAdmin(Integer id) {

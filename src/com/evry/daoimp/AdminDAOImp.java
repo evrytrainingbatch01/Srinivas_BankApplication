@@ -13,6 +13,10 @@ import com.evry.domain.Admin;
 import com.evry.domain.Customer;
 import com.evry.util.MySqlCon;
 
+/**
+ * @author srinivas.p
+ *
+ */
 public class AdminDAOImp implements AdminDao {
 	Connection con = MySqlCon.getConnection();
 
@@ -42,13 +46,14 @@ public class AdminDAOImp implements AdminDao {
 
 		try {
 			stmt = con.prepareStatement(
-					"insert into customer(firstname,lastname,age,city,country,mobileno) values (?, ?, ?, ?, ?, ?)");
+					"insert into customer(firstname,lastname,age,city,country,mobileno,balance) values (?, ?, ?, ?, ?, ?, ?)");
 			stmt.setString(1, customer.getFirstName());
 			stmt.setString(2, customer.getLastName());
 			stmt.setInt(3, customer.getAge());
 			stmt.setString(4, customer.getCity());
 			stmt.setString(5, customer.getCountry());
 			stmt.setInt(6, customer.getMobileNo());
+			stmt.setInt(7, customer.getBalance());
 
 			int i = stmt.executeUpdate();
 			if (i == 1) {
@@ -64,18 +69,17 @@ public class AdminDAOImp implements AdminDao {
 	@Override
 	public boolean delCustomer(Integer id) {
 		PreparedStatement stmt = null;
-				try {
-					stmt = con.prepareStatement("delete from customer where id = ?");
-					stmt.setInt(1, id);
-					int i = stmt.executeUpdate();
-					if (i == 1) {
-						return true;
-					}
-					
-		 }
-				catch(SQLException ex) {
-			 ex.printStackTrace();
-		 }
+		try {
+			stmt = con.prepareStatement("delete from customer where id = ?");
+			stmt.setInt(1, id);
+			int i = stmt.executeUpdate();
+			if (i == 1) {
+				return true;
+			}
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
 		return false;
 	}
 
@@ -83,7 +87,7 @@ public class AdminDAOImp implements AdminDao {
 	public List<Customer> viewCustomers() {
 		ResultSet rs;
 		Statement statement = null;
-		List<Customer> customerList= new ArrayList<Customer>();
+		List<Customer> customerList = new ArrayList<Customer>();
 		try {
 			statement = con.createStatement();
 			rs = statement.executeQuery("select * from customer");
@@ -96,6 +100,7 @@ public class AdminDAOImp implements AdminDao {
 				custList.setCity(rs.getString(5));
 				custList.setCountry(rs.getString(6));
 				custList.setMobileNo(rs.getInt(7));
+				custList.setBalance(rs.getInt(8));
 				customerList.add(custList);
 			}
 		} catch (SQLException ex) {

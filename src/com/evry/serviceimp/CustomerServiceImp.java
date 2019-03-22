@@ -4,9 +4,13 @@ import com.evry.daoimp.CustomerDAOImp;
 import com.evry.domain.Customer;
 import com.evry.service.CustomerService;
 
+/**
+ * @author srinivas.p
+ *
+ */
 public class CustomerServiceImp implements CustomerService {
-	
-	CustomerDAOImp custSerImp=new CustomerDAOImp();
+
+	CustomerDAOImp custSerImp = new CustomerDAOImp();
 
 	@Override
 	public Customer getCustomerDetails(Integer id) {
@@ -14,12 +18,15 @@ public class CustomerServiceImp implements CustomerService {
 	}
 
 	@Override
-	public boolean UpdateCustomerBal(Integer id, Integer balance) {
+	public boolean UpdateCustomerBal(Customer customer, Integer balance) {
 		// TODO Auto-generated method stub
-		return custSerImp.UpdateCustomerBal(id, balance);
+		return custSerImp.UpdateCustomerBal(customer, balance);
 	}
 
-	
-	
+	@Override
+	public boolean UpdateCustomerBal(Integer balance) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

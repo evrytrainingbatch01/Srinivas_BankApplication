@@ -1,5 +1,9 @@
 package com.evry.domain;
 
+/**
+ * @author srinivas.p
+ *
+ */
 public class Customer {
 	private Integer id;
 	private String firstName;
@@ -10,14 +14,12 @@ public class Customer {
 	private int mobileNo;
 	private int balance;
 
-	
-
 	public Customer() {
 
 	}
 
 	public Customer(Integer id, String firstName, String lastName, int age, String city, String country, int mobileNo,
-			String emailId) {
+			int balance) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -26,7 +28,7 @@ public class Customer {
 		this.city = city;
 		this.country = country;
 		this.mobileNo = mobileNo;
-		this.balance= balance;
+		this.balance = balance;
 	}
 
 	public Integer getId() {
@@ -81,15 +83,10 @@ public class Customer {
 		return mobileNo;
 	}
 
-	public Customer(int balance) {
-		super();
-		this.balance = balance;
-	}
-
 	public void setMobileNo(int mobileNo) {
 		this.mobileNo = mobileNo;
 	}
-	
+
 	public int getBalance() {
 		return balance;
 	}
@@ -101,7 +98,7 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", city="
-				+ city + ", country=" + country + ", mobileNo=" + mobileNo +", balance=" + balance + "]";
+				+ city + ", country=" + country + ", mobileNo=" + mobileNo + ", balance=" + balance + "]";
 	}
 
 }
