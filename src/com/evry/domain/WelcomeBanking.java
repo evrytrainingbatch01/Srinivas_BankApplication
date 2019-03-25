@@ -2,6 +2,9 @@ package com.evry.domain;
 
 import java.util.Scanner;
 
+import com.evry.serviceimp.AdminServiceImp;
+import com.evry.serviceimp.CustomerServiceImp;
+
 /**
  * @author srinivas.p
  *
@@ -48,42 +51,52 @@ public class WelcomeBanking {
 	}
 
 	private void callAdminMethoad() {
-		// TODO Auto-generated method stub
+		String firstname;
+		String password;
+		AdminServiceImp asi = new AdminServiceImp();
 		Scanner sc = new Scanner(System.in);
 		AdminProcess callAdminObj = new AdminProcess();
+
 		System.out.println("Enter username");
-		String username = sc.next();
+		firstname = sc.next();
 		System.out.println("Enter password");
-		String password = sc.next();
-		if (username.equals("admin") && password.equals("@123")) {
+		password = sc.next();
+		Admin admin = asi.loginAdmin(firstname, password);
+
+		if (admin.getActive() == 1) {
 			System.out.println("**********************");
 			System.out.println("WELCOME ADMIN");
 			System.out.println("**********************");
 			callAdminObj.adminOperation();
 
 		} else {
-			System.out.println("Invalid User !!!");
+			System.out.println("Invalid User Type !!!");
 		}
 
 	}
 
 	private void callCustomerMethod() {
-		// TODO Auto-generated method stub
+		String firstname;
+		String password;
+		CustomerServiceImp custSerImp = new CustomerServiceImp();
 		Scanner sc = new Scanner(System.in);
 		CustomerProcess callCustomerObj = new CustomerProcess();
+
 		System.out.println("Enter username");
-		String username = sc.next();
+		firstname = sc.next();
 		System.out.println("Enter password");
-		String password = sc.next();
-		if (username.equals("user") && password.equals("1234")) {
+		password = sc.next();
+		Customer customer = custSerImp.loginCustomer(firstname, password);
+		if (customer.getActive() == 1) {
 			System.out.println("**********************");
-			System.out.println("WELCOME TO EVRY BANKING SERVICE");
+			System.out.println("WELCOME CUSTOMER");
 			System.out.println("**********************");
 			callCustomerObj.customerOperation();
 
 		} else {
-			System.out.println("Invalid User !!!");
+			System.out.println("Invalid User Type !!!");
 		}
+
 
 	}
 

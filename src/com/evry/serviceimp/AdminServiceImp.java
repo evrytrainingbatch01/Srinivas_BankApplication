@@ -39,4 +39,10 @@ public class AdminServiceImp implements AdminService {
 		return adi.viewCustomers();
 	}
 
+	@Override
+	public Admin loginAdmin(String firstname, String password) {
+		// TODO Auto-generated method stub
+		return adi.loginAdmin(firstname, password);
+	}
+
 }

@@ -46,7 +46,7 @@ public class AdminDAOImp implements AdminDao {
 
 		try {
 			stmt = con.prepareStatement(
-					"insert into customer(firstname,lastname,age,city,country,mobileno,balance) values (?, ?, ?, ?, ?, ?, ?)");
+					"insert into customer(firstname,lastname,age,city,country,mobileno,balance,password,active) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			stmt.setString(1, customer.getFirstName());
 			stmt.setString(2, customer.getLastName());
 			stmt.setInt(3, customer.getAge());
@@ -54,6 +54,8 @@ public class AdminDAOImp implements AdminDao {
 			stmt.setString(5, customer.getCountry());
 			stmt.setInt(6, customer.getMobileNo());
 			stmt.setInt(7, customer.getBalance());
+			stmt.setString(8, customer.getPassword());
+			stmt.setInt(9, customer.getActive());
 
 			int i = stmt.executeUpdate();
 			if (i == 1) {
@@ -101,6 +103,8 @@ public class AdminDAOImp implements AdminDao {
 				custList.setCountry(rs.getString(6));
 				custList.setMobileNo(rs.getInt(7));
 				custList.setBalance(rs.getInt(8));
+				custList.setPassword(rs.getString(9));
+				custList.setActive(rs.getInt(10));
 				customerList.add(custList);
 			}
 		} catch (SQLException ex) {
@@ -109,4 +113,25 @@ public class AdminDAOImp implements AdminDao {
 		return customerList;
 	}
 
+	@Override
+	public Admin loginAdmin(String firstname, String password) {
+		Admin admin=null;
+		PreparedStatement stmt = null;
+		ResultSet rs;
+		try {
+			stmt = con.prepareStatement("select * from admin where firstname = ? and password = ?");
+		stmt.setString(1, firstname);
+		stmt.setString(2, password);
+		rs= stmt.executeQuery();
+		admin =new Admin();
+		if(rs.next()) {
+			admin.setActive(rs.getInt("active"));
+		}
+	}catch (Exception e) {
+		e.printStackTrace();
+		
+	}
+		return admin;
+
+}
 }

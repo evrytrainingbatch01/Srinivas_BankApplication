@@ -73,9 +73,9 @@ public class CustomerProcess {
 			Integer customerAccount = sc.nextInt();
 			Customer custAcc = custSerImp.getCustomerDetails(customerAccount);
 			System.out.println("Your Account Details : ");
-			System.out.println(custAcc.getId() + "     " + custAcc.getFirstName() + "     " + custAcc.getLastName()
-					+ "     " + custAcc.getAge() + "     " + custAcc.getCity() + "     " + custAcc.getCountry()
-					+ "     " + custAcc.getMobileNo() + "     " + custAcc.getBalance());
+			System.out.println("\n\t Customer ID : " + custAcc.getId() + "\n\t First Name  : " + custAcc.getFirstName() + "\n\t Last Name   : " + custAcc.getLastName()
+					+ "\n\t Age         : " + custAcc.getAge() + "\n\t City        : " + custAcc.getCity() + "\n\t Country     : " + custAcc.getCountry()
+					+ "\n\t Mobile No   : " + custAcc.getMobileNo() + "\n\t Balance     : " + custAcc.getBalance()+ "\n\t Password    : " + custAcc.getPassword());
 		}
 	}
 

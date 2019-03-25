@@ -79,20 +79,25 @@ public class AdminProcess {
 		// TODO Auto-generated method stub
 		if (opt.equals(2)) {
 			Customer cust = new Customer();
-			System.out.println("Enter your First-Name :");
+			System.out.println("Enter First-Name :");
 			cust.setFirstName(sc.next());
-			System.out.println("Enter your Last-Name :");
+			System.out.println("Enter Last-Name :");
 			cust.setLastName(sc.next());
-			System.out.println("Enter your Age :");
+			System.out.println("Enter Age :");
 			cust.setAge(sc.nextInt());
-			System.out.println("Enter your City :");
+			System.out.println("Enter City :");
 			cust.setCity(sc.next());
-			System.out.println("Enter your Country :");
+			System.out.println("Enter Country :");
 			cust.setCountry(sc.next());
-			System.out.println("Enter your Mobile No :");
+			System.out.println("Enter Mobile No :");
 			cust.setMobileNo(sc.nextInt());
-			System.out.println("Enter your Balance :");
+			System.out.println("Enter Balance :");
 			cust.setBalance(sc.nextInt());
+			System.out.println("Enter Password :");
+			cust.setPassword(sc.next());
+			System.out.println("Enter Account Status :");
+			cust.setActive(sc.nextInt());
+			
 
 			boolean CustAdded = asi.addCustomer(cust);
 			if (CustAdded) {
@@ -126,7 +131,7 @@ public class AdminProcess {
 			for (Customer cusList : listOfCustomers) {
 				System.out.println(cusList.getId() + "     " + cusList.getFirstName() + "     " + cusList.getLastName()
 						+ "     " + cusList.getAge() + "     " + cusList.getCity() + "     " + cusList.getCountry()
-						+ "     " + cusList.getMobileNo() + "     " + cusList.getBalance());
+						+ "     " + cusList.getMobileNo() + "     " + cusList.getBalance()+ "     " + cusList.getPassword()+ "     " + cusList.getActive());
 			}
 		}
 	}

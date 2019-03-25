@@ -1,5 +1,6 @@
 package com.evry.service;
 
+import com.evry.domain.Admin;
 import com.evry.domain.Customer;
 
 /**
@@ -12,4 +13,6 @@ public interface CustomerService {
 	public boolean UpdateCustomerBal(Customer customer, Integer balance);
 
 	boolean UpdateCustomerBal(Integer balance);
+	
+	public Customer loginCustomer(String firstname, String password);
 }

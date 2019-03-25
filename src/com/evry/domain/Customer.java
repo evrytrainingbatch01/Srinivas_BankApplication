@@ -13,13 +13,15 @@ public class Customer {
 	private String country;
 	private int mobileNo;
 	private int balance;
+	private String password;
+	private int active;
 
 	public Customer() {
 
 	}
 
 	public Customer(Integer id, String firstName, String lastName, int age, String city, String country, int mobileNo,
-			int balance) {
+			int balance, String password, int active) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -29,6 +31,8 @@ public class Customer {
 		this.country = country;
 		this.mobileNo = mobileNo;
 		this.balance = balance;
+		this.password = password;
+		this.active = active;
 	}
 
 	public Integer getId() {
@@ -95,10 +99,28 @@ public class Customer {
 		this.balance = balance;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getActive() {
+		return active;
+	}
+
+	public void setActive(int active) {
+		this.active = active;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", city="
-				+ city + ", country=" + country + ", mobileNo=" + mobileNo + ", balance=" + balance + "]";
+				+ city + ", country=" + country + ", mobileNo=" + mobileNo + ", balance=" + balance + ", password="
+				+ password + ", active=" + active + "]";
 	}
 
+	
 }

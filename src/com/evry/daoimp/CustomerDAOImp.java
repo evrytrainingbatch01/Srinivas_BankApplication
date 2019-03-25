@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.evry.dao.CustomerDAO;
+import com.evry.domain.Admin;
 import com.evry.domain.Customer;
 import com.evry.util.MySqlCon;
 
@@ -33,6 +34,7 @@ public class CustomerDAOImp implements CustomerDAO {
 				custData.setCountry(rs.getString(6));
 				custData.setMobileNo(rs.getInt(7));
 				custData.setBalance(rs.getInt(8));
+				custData.setPassword(rs.getString(9));
 				return custData;
 			}
 		} catch (SQLException ex) {
@@ -57,6 +59,29 @@ public class CustomerDAOImp implements CustomerDAO {
 		return false;
 	}
 
+
+
+	@Override
+	public Customer loginCustomer(String firstname, String password) {
+		Customer customer=null;
+		PreparedStatement stmt = null;
+		ResultSet rs;
+		try {
+			stmt = con.prepareStatement("select * from customer where firstname = ? and password = ?");
+		stmt.setString(1, firstname);
+		stmt.setString(2, password);
+		rs= stmt.executeQuery();
+		customer =new  Customer();
+		if(rs.next()) {
+			customer.setActive(rs.getInt("active"));
+		}
+	}catch (Exception e) {
+		e.printStackTrace();
+		
+	}
+		return customer;
+	}
+	
 	@Override
 	public boolean UpdateCustomerBal(Integer id, Integer balance) {
 		// TODO Auto-generated method stub

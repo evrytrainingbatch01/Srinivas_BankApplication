@@ -17,4 +17,6 @@ public interface AdminService {
 	public boolean delCustomer(Integer id);
 
 	public List<Customer> viewCustomers();
+	
+	public Admin loginAdmin(String firstname, String password);
 }

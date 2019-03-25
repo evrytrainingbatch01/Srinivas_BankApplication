@@ -10,17 +10,23 @@ public class Admin {
 	private String firstName;
 	private String lastName;
 	private int age;
+	private String password;
+	private int active;
 
 	public Admin() {
 
 	}
 
-	public Admin(int id, String firstName, String lastName, int age) {
+	
+
+	public Admin(int id, String firstName, String lastName, int age, String password,int active) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
+		this.password = password;
+		this.active = active;
 	}
 
 	public int getId() {
@@ -55,8 +61,27 @@ public class Admin {
 		this.age = age;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getActive() {
+		return active;
+	}
+
+	public void setActive(int active) {
+		this.active = active;
+	}
+
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + "]";
+		return "Admin [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
+				+ ", password=" + password + ",active=" + active + "]";
 	}
+
+	
 }

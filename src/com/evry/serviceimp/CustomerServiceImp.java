@@ -29,4 +29,10 @@ public class CustomerServiceImp implements CustomerService {
 		return false;
 	}
 
+	@Override
+	public Customer loginCustomer(String firstname, String password) {
+		// TODO Auto-generated method stub
+		return custSerImp.loginCustomer(firstname, password);
+	}
+
 }

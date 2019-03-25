@@ -18,4 +18,6 @@ public interface AdminDao {
 
 	public List<Customer> viewCustomers();
 
+	public Admin loginAdmin(String firstname, String password);
+
 }
